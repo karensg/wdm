@@ -2,38 +2,38 @@
 $(document).ready(function() {
  
  	var xml;
-	$("#searchButton").click(function() {
+	$("#searchButton").click(function(event) {
+	
+		title = $("#inputTitle").val();
+		console.log(title);
 		event.preventDefault();
 		$.ajax({
 		    type: "GET",
-		    //url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=results.xsl&_query=/movies//movie[title='Heat']",
-		    url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=results.xsl",
-		    /*data: trackingJSON,*/
+			dataType: "html",
+		    url: 'http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=http://localhost:8080/exist/rest/db/movies/results.xsl&_query=//movie[title="'+title+'"]',
 		    beforeSend: function() { console.log("Sending.."); },
 		    complete: function() { console.log("complete.."); },
-		    success: function(data) { console.log("Succes:" + JSON.stringify(data)); processData(data); },
+		    success: function(data) { console.log("Succes:"); processData(data); },
 		    error: function(data) { console.log("Error?:"); },
 		});
 	});
 
 	function processData(data){
-
+		console.log(data);
 		xml = data;
 		$("#results").html(data);
-		$('.list-group-item').click(function(){
+		$('.list-group-item').click(function(event){
 
 			title = $(this).find('.list-group-item-heading').text();
 			console.log(title);
 
 			$.ajax({
 		    type: "GET",
-		    //url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_query=/movies//movie[title='"+title+"']&_xsl=detail.xsl",
-		    //url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_query=/movies//movie[title='"+title+"']",
-		    url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=detail.xsl",
-		    /*data: trackingJSON,*/
+			dataType: "html",
+		    url: "http://localhost:8080/exist/rest/db/movies/movies.xml?_query=//movie[title='"+title+"']&_xsl=http://localhost:8080/exist/rest/db/movies/detail.xsl",
 		    beforeSend: function() { console.log("Sending.."); },
 		    complete: function() { console.log("complete.."); },
-		    success: function(data) { console.log("Succes:"); showDetails(data,title) },
+		    success: function(data) { console.log("Success:"); showDetails(data,title) },
 		    error: function(data) { console.log("Error?:"); },
 			});
 			
