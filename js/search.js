@@ -5,7 +5,16 @@ $(document).ready(function() {
 	$("#searchButton").click(function(event) {
 	
 		title = $("#inputTitle").val();
-		console.log(title);
+		genre = $("#inputGenre").val();
+		directors = $("#inputDirector").val();
+		actors = $("#inputActors").val();
+		year = $("#inputYear").val();
+		keywords = $("#inputKeywords").val();
+		
+		criteria = "//movie";
+		
+		
+		
 		event.preventDefault();
 		$.ajax({
 		    type: "GET",
