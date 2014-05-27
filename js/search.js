@@ -6,12 +6,40 @@ $(document).ready(function() {
 	
 		title = $("#inputTitle").val();
 		genre = $("#inputGenre").val();
-		directors = $("#inputDirector").val();
+		director = $("#inputDirector").val();
 		actors = $("#inputActors").val();
 		year = $("#inputYear").val();
 		keywords = $("#inputKeywords").val();
 		
-		criteria = "//movie";
+		
+		criteria = "//movie[";
+		if(title != "") {
+			criteria += 'contains(title,"'+title+'") and'
+		}
+		if(genre != "") {
+			criteria += 'genre="'+genre+'" and'
+		}
+		if(director != "") {
+			criteria += 'contains(director/child::*,"'+director+'") and';
+		}
+		if(actors != "") {
+			criteria += 'contains(actor/child::*,"'+actors+'") and';
+		}
+		if(year != "") {
+			criteria += 'year="'+year+'" and'
+		}
+		if(keywords != "") {
+			criteria += 'contains(summary,"'+keywords+'") and'
+		}
+
+		if (criteria == "//movie[") {
+			criteria = "//movie";
+		} else {
+			criteria = criteria.substring(0, criteria.length - 4);
+			criteria += "]";
+		}
+
+		
 		
 		
 		
@@ -19,7 +47,7 @@ $(document).ready(function() {
 		$.ajax({
 		    type: "GET",
 			dataType: "html",
-		    url: 'http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=http://localhost:8080/exist/rest/db/movies/results.xsl&_query=//movie[title="'+title+'"]',
+		    url: 'http://localhost:8080/exist/rest/db/movies/movies.xml?_xsl=http://localhost:8080/exist/rest/db/movies/results.xsl&_query=' + criteria,
 		    beforeSend: function() { console.log("Sending.."); },
 		    complete: function() { console.log("complete.."); },
 		    success: function(data) { console.log("Succes:"); processData(data); },
@@ -30,7 +58,12 @@ $(document).ready(function() {
 	function processData(data){
 		console.log(data);
 		xml = data;
-		$("#results").html(data);
+		if (xml == '<div class="list-group"/>') {
+			html = '<div class="well well-lg">No results yet</div>';
+		} else {
+			html = data;
+		}
+		$("#results").html(html);
 		$('.list-group-item').click(function(event){
 
 			title = $(this).find('.list-group-item-heading').text();

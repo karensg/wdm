@@ -9,13 +9,13 @@
 		<tr><td>Summary</td><td><xsl:value-of select="summary" /></td></tr>
 	<tr>
 		<td>Director</td>
-		<td><xsl:value-of select="director/first_name" />  <xsl:value-of select="director/last_name" /> (<xsl:value-of select="director/birth_date" />)</td>
+		<td><xsl:value-of select="director/first_name" />&#160;<xsl:value-of select="director/last_name" /> (<xsl:value-of select="director/birth_date" />)</td>
 	</tr>
 
 	<xsl:for-each select="actor">
 		<tr>
 			<td>Actor</td>
-			<td><xsl:value-of select="first_name" />  <xsl:value-of select="last_name" /> (<xsl:value-of select="birth_date" />) as <xsl:value-of select="role" /></td>
+			<td><xsl:value-of select="first_name" />&#160;<xsl:value-of select="last_name" /> (<xsl:value-of select="birth_date" />) as <xsl:value-of select="role" /></td>
 		</tr>
 	</xsl:for-each>
 
