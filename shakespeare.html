@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Projects 5.6.1</title>
+    <title>Projects 5.6.2</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +31,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="search.html">Movies</a></li>
-            <li class=""><a href="shakespeare.html">Shakespeare</a></li>
+            <li class=""><a href="search.html">Movies</a></li>
+            <li class="active"><a href="shakespeare.html">Shakespeare</a></li>
             <!--<li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -61,8 +61,8 @@
     <div class="container">
 
    <div class="blog-header">
-        <h1 class="blog-title">Project 5.6.1</h1>
-        <p class="lead blog-description">Simple search engine.</p>
+        <h1 class="blog-title">Project 5.6.2</h1>
+        <p class="lead blog-description">Shakespeare search engine.</p>
       </div>
 
       <div class="row"> 
@@ -70,65 +70,45 @@
 
           <h2>Search form</h2>
           <form class="form-horizontal" role="form">
-            <!-- Title -->
+            <!-- Character -->
             <div class="form-group">
-              <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+              <label for="inputCharacter" class="col-sm-2 control-label">Character</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTitle" placeholder="Part of title">
+                <input type="text" class="form-control" id="inputCharacter" placeholder="Search for character">
               </div>
-            </div>
-            
-            <!-- Genres -->
-            <div class="form-group">
-              <label for="inputGenre" class="col-sm-2 control-label">Genre</label>
-              <div class="col-sm-10">
-                <select class="form-control" style="width: 100%;" id="inputGenre">
-                  <option value="">Select genre:</option>
-                  <option>Crime</option>
-                  <option>Western</option>
-                  <option>Drama</option>
-				  <option>Action</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Director -->
-            <div class="form-group">
-              <label for="inputDirector" class="col-sm-2 control-label">Director</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputDirector" placeholder="First or last name">
-              </div>
-            </div>
-			
-			<!-- Actors -->
-			<div class="form-group">
-              <label for="inputActors" class="col-sm-2 control-label">Actors</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputActors" placeholder="First or last name">
-              </div>
-            </div>
-
-            <!-- years -->
-            <div class="form-group">
-              <label for="inputYear" class="col-sm-2 control-label">Year</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputYear" placeholder="Year">
-              </div>
-            </div>
-
-            <!-- Keywords -->
-            <div class="form-group">
-              <label for="inputKeywords" class="col-sm-2 control-label">Keywords</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputKeywords" placeholder="Keywords">
-              </div>
-            </div>
-            
+            </div>  
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" id="searchButton" class="btn btn-default pull-right">Search</button>
+                <button type="button" id="searchButtonCharacter" class="btn btn-default pull-right">Search character</button>
               </div>
             </div>
+
+            <!-- Scene -->
+            <div class="form-group">
+              <label for="inputScene" class="col-sm-2 control-label">Scene</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputScene" placeholder="Search for scene">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="searchButtonScene" class="btn btn-default pull-right">Search scene</button>
+              </div>
+            </div>
+
+            <!-- Act -->
+            <div class="form-group">
+              <label for="inputAct" class="col-sm-2 control-label">Act</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputAct" placeholder="Search for act">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="searchButtonAct" class="btn btn-default pull-right">Search act</button>
+              </div>
+            </div>
+            
           </form>
         </div>
       </div>
@@ -166,6 +146,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/helpers.js"></script>
      <script src="js/modal.js"></script>
-    <script src="js/search.js"></script>
+    <script src="js/shakespeare.js"></script>
   </body>
 </html>

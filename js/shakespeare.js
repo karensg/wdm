@@ -96,6 +96,8 @@ $(document).ready(function() {
 		});
 
 	}
+
+
 	
 
 	function showDetails(data,title){	
