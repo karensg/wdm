@@ -32,7 +32,7 @@
 		<br/>
 
 		<h3> Play the song </h3>
-		<audio controls="yes"></audio>
+		<audio controls="yes" loop="yes"></audio>
 
 		<h3>Lyrics</h3>
 		<div class="lyrics">
