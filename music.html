@@ -71,13 +71,32 @@
 
         <h1> Songs in the Database</h1>
           <div class="row" id="songs">
+            <div class="list-group">
             <!-- Loaded by JS -->
+            </div>
           </div>
 
           <h2>Song details</h2>
+          
           <div id="results"> 
-            <div class="well well-lg">First select a movie to see the details</div>
-          </div>       
+            <div class="well well-lg">First select a song to see the details</div>
+          </div>
+          
+          <div id="scores-popup" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 id="detail-title" class="modal-title" id="myLargeModalLabel"></h4>
+                </div>
+                <div id="detail-body" class="modal-body">
+                  <object data="http://localhost:8080/exist/rest/db/music/*.pdf" type="application/pdf" width="850" height="800">
+                  alt : <a href="">Your browser does not support PDF files. Please download the file here.</a>
+                  </object>
+                </div>
+              </div>
+            </div>
+          </div>   
 
         </div>
 
@@ -91,7 +110,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/helpers.js"></script>
-     <script src="js/modal.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/music.js"></script>
   </body>
 </html>

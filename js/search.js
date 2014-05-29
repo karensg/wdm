@@ -98,8 +98,7 @@ $(document).ready(function() {
 	}
 	
 
-	function showDetails(data,title){	
-		console.log(data);	
+	function showDetails(data,title){
 
 		$("#detail-title").text(title);
 		$("#detail-body").html(data);
