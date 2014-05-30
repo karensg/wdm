@@ -5,7 +5,10 @@ $("document").ready(function() {
 
 	// Get song titles
 	refreshList = function (searchCriteria) {
-		$.get(url + "?_query=" + searchCriteria, function(data) {
+		$.get(url + "?_query=" + searchCriteria, processResults);
+	};
+
+	processResults = function(data) {
 			resultsXsl = loadXMLDoc('xsl/songs.xsl');
 			html = getHtmlFromXsl(data,resultsXsl);
 			$("#songs").html(html);
@@ -40,18 +43,15 @@ $("document").ready(function() {
 			});
 
 
-		});
-	};
+		}
 
 
 	$("#searchButton").click(function(event) {
 		event.preventDefault();
 		keywords = $("#inputKeywords").val();
 		melody = $("#inputMelody").val();
-		melodyArr = melody.split(" ");
-		console.log(melodyArr);
 		if(keywords.length != 0) {
-			searchCriteria = '/score-partwise[contains(credit/credit-words,"America")]/movement-title';
+			searchCriteria = '/score-partwise[contains(credit/credit-words,"'+keywords+'")]/movement-title';
 		}
 		else {
 			searchCriteria = "//movement-title";
@@ -60,6 +60,30 @@ $("document").ready(function() {
 
 	});
 
+	$("#searchButtonMelody").click(function(event) {
+		event.preventDefault();
+		melody = $("#inputMelody").val().replace(" ", "");
+		if(melody.length != 0) {
+			$.ajax({
+	            type: "GET",
+	            url: "http://localhost:8080/exist/rest/db/shakespeare/melody.xql",
+	            data: {"melody":melody},
+	            dataType: "xml",
+	            success: function(data){
+	            	processResults(data);
+	            }
+	        });
+		}
+		else {
+			searchCriteria = "//movement-title";
+			refreshList(searchCriteria);
+		}
+		
+
+	});
+
+
+	//Initial request
 	refreshList("//movement-title");
 	
 

@@ -1,0 +1,9 @@
+-XML files are downloaded from Finale Repertoire
+
+-Pdf files are created this way and can also be exported with Finale
+
+musicxml2ly.py ./musicXML/America the Beautiful.xml
+lilypond --pdf ./musicXML/America the Beautiful.ly
+
+-Mp3 files are created with Finale
+America The Beautiful mp3 is not working
