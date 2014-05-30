@@ -47,8 +47,12 @@ $("document").ready(function() {
 	$("#searchButton").click(function(event) {
 		event.preventDefault();
 		keywords = $("#inputKeywords").val();
-		if(keywords.length != 0)
+		melody = $("#inputMelody").val();
+		melodyArr = melody.split(" ");
+		console.log(melodyArr);
+		if(keywords.length != 0) {
 			searchCriteria = '/score-partwise[contains(credit/credit-words,"America")]/movement-title';
+		}
 		else {
 			searchCriteria = "//movement-title";
 		}
